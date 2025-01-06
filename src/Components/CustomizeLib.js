@@ -159,7 +159,7 @@ createWarningMessageContainer() {
     this.warningMessageDiv = document.createElement('div');
     this.warningMessageDiv.id = 'warningMessage';
     this.warningMessageDiv.style.color = 'red';
-    this.warningMessageDiv.style.position = 'absolute'; // Position relative to the cell
+    this.warningMessageDiv.style.position = 'fixed'; // Position relative to the cell
     this.warningMessageDiv.style.marginTop = '5px'; // Slight margin for spacing
     this.warningMessageDiv.style.left = '0'; // Align it with the left side of the cell
     this.warningMessageDiv.style.zIndex = '999999'; // Ensure it appears above other elements
@@ -168,9 +168,11 @@ createWarningMessageContainer() {
     this.warningMessageDiv.style.padding = '5px';
     this.warningMessageDiv.style.borderRadius = '4px';
     this.warningMessageDiv.style.display = 'none'; // Initially hidden
+    this.warningMessageDiv.style.top = `${this.eInput.getBoundingClientRect().bottom + 10}px`;
+    this.warningMessageDiv.style.left = `${this.eInput.getBoundingClientRect().left - 10}px`;
 
     // Get the cell's parent container
-    const parent = this.eInput.closest('.ag-cell'); // Find the cell's closest parent (the entire cell)
+    const parent = this.eInput.closest('.ag-root-wrapper'); // Find the cell's closest parent (the entire cell)
     
     if (parent) {
         // Ensure the parent is relatively positioned
